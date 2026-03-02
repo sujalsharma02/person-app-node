@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container fade-in">
+        <header class="header">
+            <h1>People Directory</h1>
+            <a href="/person/new" class="btn btn-primary">+ Add New Person</a>
+        </header>
+
+        <div class="card">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Mobile Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (people && people.length > 0) { %>
+                        <% people.forEach(person => { %>
+                            <tr>
+                                <td><%= person.Name %></td>
+                                <td><%= person.Age %></td>
+                                <td>
+                                    <span class="badge <%= person.Gender.toLowerCase() %>">
+                                        <%= person.Gender %>
+                                    </span>
+                                </td>
+                                <td><%= person['Mobile number'] %></td>
+                                <td class="actions">
+                                    <a href="/person/<%= person._id %>/edit" class="btn btn-sm btn-outline">Edit</a>
+                                    <a href="/person/<%= person._id %>/delete" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="5" class="empty-state">No people found. Add someone to get started!</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

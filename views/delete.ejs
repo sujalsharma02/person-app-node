@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Person</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container fade-in">
+        <header class="header">
+            <h1>Delete Person</h1>
+            <a href="/person" class="btn btn-outline">&larr; Back to Directory</a>
+        </header>
+
+        <div class="card form-card text-center">
+            <h3>Are you sure you want to delete <%= person.Name %>?</h3>
+            <p class="text-muted mb-4">This action cannot be undone.</p>
+
+            <div class="details-box mb-4 text-left">
+                <p><strong>Age:</strong>
+                    <%= person.Age %>
+                </p>
+                <p><strong>Gender:</strong>
+                    <%= person.Gender %>
+                </p>
+                <p><strong>Mobile Number:</strong>
+                    <%= person['Mobile number'] %>
+                </p>
+            </div>
+
+            <form action="/person/<%= person._id %>?_method=DELETE" method="POST" class="form d-inline-block">
+                <button type="submit" class="btn btn-danger btn-large">Yes, Delete Person</button>
+                <a href="/person" class="btn btn-outline ml-2">Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
