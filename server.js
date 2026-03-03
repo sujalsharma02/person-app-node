@@ -37,20 +37,6 @@ app.get('/person', async (req, res) => {
     }
 });
 
-// Since the prompt explicitly says:
-// POST /person: Displays a form to create a single person
-// PUT /person/{id}: Displays a form through which a person with a specified id parameter can be edited and updated
-// DELETE /person/{id}: Displays a page through which a person with a specified ID can be deleted
-// 
-// Forms in pure HTML can only use GET or POST to submit, and a link can only use GET.
-// However, the prompt might be poorly worded and actually means:
-// "GET /person/new" => displays form, "POST /person" => creates the person.
-// "GET /person/:id/edit" => displays form, "PUT /person/:id" => edits the person.
-// "GET /person/:id/delete" => displays page, "DELETE /person/:id" => deletes the person.
-// 
-// I will provide the standard REST endpoints to render forms + the actual actions.
-// If the prompt literally meant the HTTP method should display the form, it's virtually impossible via normal browser navigation without JS.
-// Therefore, I will use GET method for rendering the forms to make it usable in a browser, and map the prompt's required methods to the actual execution actions.
 
 // Render Create Form
 app.get('/person/new', (req, res) => res.render('create'));
